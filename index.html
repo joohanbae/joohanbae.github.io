@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Your Name] — [Your Field]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#E9EBEC; --raised:#F3F4F4; --ink:#191D20;
+    --soft:#596266; --faint:#8B9498; --accent:#14605C; --rule:#C9CECF;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#15181A; --raised:#1D2225; --ink:#E5E8E7;
+      --soft:#9AA4A7; --faint:#6B7679; --accent:#58BDB2; --rule:#2D3437;
+    }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Newsreader","Hiragino Mincho ProN","Nanum Myeongjo",Georgia,serif;
+    font-size:19px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  @media(max-width:640px){body{font-size:17.5px}}
+  .wrap{max-width:46rem;margin:0 auto;padding:0 1.5rem 6rem}
+  a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
+  a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .meta{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.75rem;color:var(--faint);font-weight:500}
+
+  header{padding:4.5rem 0 0;display:flex;justify-content:space-between;
+    align-items:baseline;gap:1rem;flex-wrap:wrap}
+  .name{font-size:1rem;font-weight:500}
+  .affil{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.8rem;
+    color:var(--soft);font-weight:400}
+
+  .hero{padding:3.2rem 0 3.5rem;border-bottom:1px solid var(--rule)}
+  .hero p{font-size:1.8rem;line-height:1.42;font-weight:300;
+    letter-spacing:-.011em;margin:0;max-width:30rem}
+  @media(max-width:640px){.hero p{font-size:1.42rem}}
+
+  section{padding:3.2rem 0;border-bottom:1px solid var(--rule)}
+  section:last-of-type{border-bottom:none}
+  h2{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.8rem;
+    font-weight:600;letter-spacing:.02em;color:var(--faint);margin:0 0 1.6rem}
+  p{max-width:34rem;margin:0 0 1.05rem}
+
+  .item{margin-bottom:2.2rem}
+  .item:last-child{margin-bottom:0}
+  .item h3{font-size:1.1rem;font-weight:500;margin:0 0 .4rem}
+  .item p{margin:0;color:var(--soft);font-size:.96rem}
+
+  ol.pubs{list-style:none;margin:0;padding:0}
+  ol.pubs li{padding:1.1rem 0;border-top:1px solid var(--rule);
+    display:grid;grid-template-columns:5.2rem 1fr;gap:1.2rem}
+  ol.pubs li:first-child{border-top:none;padding-top:0}
+  @media(max-width:520px){ol.pubs li{grid-template-columns:1fr;gap:.3rem}}
+  .venue{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.74rem;
+    font-weight:600;color:var(--accent);padding-top:.3rem;line-height:1.4}
+  .venue span{display:block;color:var(--faint);font-weight:400}
+  .pub-title{font-size:1rem;line-height:1.45;margin:0}
+  .pub-note{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.78rem;
+    color:var(--faint);margin:.35rem 0 0}
+
+  .links{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;margin-top:1.2rem;
+    font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.9rem}
+  footer{padding:2.5rem 0 0;border-top:1px solid var(--rule);margin-top:3.2rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="name">[Your Name] <span class="affil">— [University], [Lab]</span></div>
+    <div class="meta">[City]</div>
+  </header>
+
+  <div class="hero">
+    <p>[한 문장. 소속 소개가 아니라 당신이 푸는 문제를 씁니다.
+    "나는 X를 연구한다"보다 "Y라는 문제가 있고 나는 Z를 만든다"가 낫습니다.]</p>
+  </div>
+
+  <section>
+    <h2>Research</h2>
+    <p>[2~3문장으로 연구 영역과 접근을 설명합니다.]</p>
+    <div style="margin-top:2rem">
+      <div class="item">
+        <h3>[연구 주제 1]</h3>
+        <p>[2문장 설명]</p>
+      </div>
+      <div class="item">
+        <h3>[연구 주제 2]</h3>
+        <p>[2문장 설명]</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Publications</h2>
+    <ol class="pubs">
+      <li>
+        <div class="venue">[학회]<span>[연도]</span></div>
+        <div>
+          <p class="pub-title">[논문 제목]</p>
+          <p class="pub-note">[저자 · 발표 형식]</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Background</h2>
+    <p>[학력, 지도교수, 이 분야에 오게 된 경로. 이력서가 아니라 짧은 서사로.]</p>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>[한 문장. 지금 무엇을 찾고 있는지.]</p>
+    <div class="links">
+      <a href="mailto:you@example.com">Email</a>
+      <a href="#">Google Scholar</a>
+      <a href="#">GitHub</a>
+      <a href="#">ORCID</a>
+      <a href="#">CV</a>
+    </div>
+  </section>
+
+  <footer><div class="meta">Last updated [월 연도]</div></footer>
+
+</div>
+</body>
+</html>
