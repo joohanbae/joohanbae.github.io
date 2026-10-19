@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Joohan — Human–AI Interaction Research</title>
+<title>Joohan Bae — Human–AI Interaction Research</title>
+<meta name="description" content="Joohan Bae — HCI researcher working on making the hidden reasoning of AI legible. Kogakuin University, Misaki Lab.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,276 +22,353 @@
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --paper:#15181A;
-      --paper-raised:#1D2225;
-      --ink:#E5E8E7;
-      --ink-soft:#9AA4A7;
-      --ink-faint:#6B7679;
-      --accent:#58BDB2;
-      --accent-wash:#58BDB222;
-      --rule:#2D3437;
+      --paper:#15181A; --paper-raised:#1D2225; --ink:#E5E8E7;
+      --ink-soft:#9AA4A7; --ink-faint:#6B7679; --accent:#58BDB2;
+      --accent-wash:#58BDB222; --rule:#2D3437;
     }
   }
   :root[data-theme="dark"]{
-    --paper:#15181A;
-    --paper-raised:#1D2225;
-    --ink:#E5E8E7;
-    --ink-soft:#9AA4A7;
-    --ink-faint:#6B7679;
-    --accent:#58BDB2;
-    --accent-wash:#58BDB222;
-    --rule:#2D3437;
+    --paper:#15181A; --paper-raised:#1D2225; --ink:#E5E8E7;
+    --ink-soft:#9AA4A7; --ink-faint:#6B7679; --accent:#58BDB2;
+    --accent-wash:#58BDB222; --rule:#2D3437;
   }
 
   *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
   body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
+    margin:0; background:var(--paper); color:var(--ink);
     font-family:"Newsreader","Hiragino Mincho ProN","Yu Mincho","Nanum Myeongjo",Georgia,serif;
-    font-size:19px;
-    line-height:1.62;
-    font-weight:400;
+    font-size:19px; line-height:1.62; font-weight:400;
     -webkit-font-smoothing:antialiased;
   }
   @media (max-width:640px){ body{font-size:17.5px} }
 
-  .wrap{
-    max-width:46rem;
-    margin:0 auto;
-    padding:0 1.5rem 6rem;
-  }
+  .wrap{max-width:46rem;margin:0 auto;padding:0 1.5rem 6rem}
 
-  a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);transition:border-color .15s, color .15s}
+  a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);
+    transition:border-color .15s, color .15s}
   a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 
-  .meta{
-    font-family:"IBM Plex Sans",system-ui,sans-serif;
-    font-size:.75rem;
-    letter-spacing:.01em;
-    color:var(--ink-faint);
-    font-weight:500;
-  }
+  .meta{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.75rem;
+    letter-spacing:.01em;color:var(--ink-faint);font-weight:500}
 
   /* ---------- masthead ---------- */
-  header.masthead{
-    padding:4.5rem 0 0;
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    gap:1rem;
-    flex-wrap:wrap;
-  }
-  .name{
-    font-size:1rem;
-    font-weight:500;
-    letter-spacing:.005em;
-  }
-  .affil{
-    font-family:"IBM Plex Sans",system-ui,sans-serif;
-    font-size:.8rem;
-    color:var(--ink-soft);
-    font-weight:400;
-  }
+  header.masthead{padding:4.5rem 0 0;display:flex;justify-content:space-between;
+    align-items:baseline;gap:1rem;flex-wrap:wrap}
+  .name{font-size:1rem;font-weight:500;letter-spacing:.005em}
+  .affil{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.8rem;
+    color:var(--ink-soft);font-weight:400}
 
-  /* ---------- hero: the annotated sentence ---------- */
-  .hero{
-    padding:3.2rem 0 3.5rem;
-    border-bottom:1px solid var(--rule);
-  }
-  .hero p{
-    font-size:1.85rem;
-    line-height:1.42;
-    font-weight:300;
-    letter-spacing:-.011em;
-    margin:0;
-    max-width:30rem;
-  }
+  /* ---------- hero ---------- */
+  .hero{padding:3.2rem 0 3.5rem;border-bottom:1px solid var(--rule)}
+  .hero p{font-size:1.85rem;line-height:1.42;font-weight:300;
+    letter-spacing:-.011em;margin:0;max-width:30rem}
   @media (max-width:640px){ .hero p{font-size:1.45rem} }
 
-  /* the annotation device: an implicit premise surfacing beneath the text */
-  .premise{
-    position:relative;
-    display:inline;
-    border-bottom:2px dotted var(--accent);
-    cursor:help;
-  }
+  .premise{position:relative;display:inline;border-bottom:2px dotted var(--accent);cursor:help}
   .premise .gloss{
-    display:block;
-    font-family:"IBM Plex Sans",system-ui,sans-serif;
-    font-size:.78rem;
-    line-height:1.5;
-    font-weight:400;
-    color:var(--accent);
-    background:var(--accent-wash);
-    border-left:2px solid var(--accent);
-    padding:.55rem .8rem;
-    margin-top:1.1rem;
-    max-width:26rem;
-    opacity:0;
-    transform:translateY(-4px);
+    display:block;font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:.78rem;line-height:1.5;font-weight:400;color:var(--accent);
+    background:var(--accent-wash);border-left:2px solid var(--accent);
+    padding:.55rem .8rem;margin-top:1.1rem;max-width:26rem;
+    opacity:0;transform:translateY(-4px);
     transition:opacity .28s ease, transform .28s ease;
   }
-  .premise:hover .gloss,
-  .premise:focus-within .gloss,
-  .premise.revealed .gloss{
-    opacity:1;
-    transform:translateY(0);
+  .premise:hover .gloss,.premise:focus-within .gloss,.premise.revealed .gloss{
+    opacity:1;transform:translateY(0)}
+  @media (prefers-reduced-motion: reduce){ .premise .gloss{transition:none} }
+
+  /* ---------- now banner ---------- */
+  .now{
+    display:flex;gap:.9rem;align-items:flex-start;
+    border-left:2px solid var(--accent);background:var(--accent-wash);
+    padding:.9rem 1.1rem;margin:2.6rem 0 0;
+    font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.88rem;
+    line-height:1.6;
   }
-  @media (prefers-reduced-motion: reduce){
-    .premise .gloss{transition:none}
-  }
+  .now .tag{color:var(--accent);font-weight:600;font-size:.72rem;
+    letter-spacing:.03em;padding-top:.18rem;white-space:nowrap}
+  .now p{margin:0;max-width:none}
+  .now a{border-bottom-color:var(--accent)}
 
   /* ---------- sections ---------- */
-  section{
-    padding:3.2rem 0;
-    border-bottom:1px solid var(--rule);
-  }
+  section{padding:3.2rem 0;border-bottom:1px solid var(--rule)}
   section:last-of-type{border-bottom:none}
-
-  h2{
-    font-family:"IBM Plex Sans",system-ui,sans-serif;
-    font-size:.8rem;
-    font-weight:600;
-    letter-spacing:.02em;
-    color:var(--ink-faint);
-    margin:0 0 1.6rem;
-  }
-
+  h2{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.8rem;
+    font-weight:600;letter-spacing:.02em;color:var(--ink-faint);margin:0 0 1.6rem}
   p{max-width:var(--measure)}
   p + p{margin-top:1.05rem}
-
   .lede{font-size:1.05rem}
 
-  /* thread list — annotated paragraphs, not cards */
   .thread{margin-bottom:2.4rem}
   .thread:last-child{margin-bottom:0}
-  .thread h3{
-    font-size:1.12rem;
-    font-weight:500;
-    margin:0 0 .45rem;
-    letter-spacing:-.003em;
-  }
+  .thread h3{font-size:1.12rem;font-weight:500;margin:0 0 .45rem;letter-spacing:-.003em}
   .thread p{margin:0;color:var(--ink-soft);font-size:.97rem}
 
-  /* ---------- work / video ---------- */
-  .demo{
-    background:var(--paper-raised);
-    border:1px solid var(--rule);
-    border-radius:3px;
-    aspect-ratio:16/9;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:1.5rem;
-    margin:0 0 1.4rem;
-    color:var(--ink-faint);
+  /* ---------- projects ---------- */
+  .project{
+    display:grid;grid-template-columns:4.6rem 1fr;gap:1.3rem;
+    padding:1.9rem 0;border-top:1px solid var(--rule);
   }
-  .demo .meta{max-width:22rem}
-  .demo video{width:100%;height:100%;object-fit:cover;border-radius:2px}
+  .project:first-of-type{border-top:none;padding-top:0}
+  @media (max-width:560px){
+    .project{grid-template-columns:1fr;gap:.5rem}
+  }
+  .yr{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.74rem;
+    font-weight:600;color:var(--accent);padding-top:.38rem;line-height:1.45}
+  .yr span{display:block;color:var(--ink-faint);font-weight:400}
+  .project h3{font-size:1.14rem;font-weight:500;margin:0 0 .15rem;letter-spacing:-.004em}
+  .role{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.76rem;
+    color:var(--ink-faint);margin:0 0 .6rem}
+  .project p.desc{margin:0;color:var(--ink-soft);font-size:.97rem;max-width:30rem}
+  .project p.desc + p.desc{margin-top:.6rem}
+
+  /* ---------- expand / collapse ---------- */
+  .pdet summary{list-style:none;cursor:pointer;display:block}
+  .pdet summary::-webkit-details-marker{display:none}
+  .pdet summary:focus-visible{outline:2px solid var(--accent);outline-offset:5px;border-radius:2px}
+  .teaser{margin:0;color:var(--ink-soft);font-size:.97rem;max-width:30rem}
+  .toggle{
+    display:inline-flex;align-items:center;gap:.4rem;margin-top:.8rem;
+    font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.76rem;
+    font-weight:600;color:var(--accent);
+  }
+  .toggle::before{content:"Read more"}
+  .pdet[open] .toggle::before{content:"Close"}
+  .pdet summary:hover .toggle{text-decoration:underline;text-underline-offset:3px}
+  .toggle svg{width:.58rem;height:.58rem;transition:transform .2s ease}
+  .pdet[open] .toggle svg{transform:rotate(180deg)}
+  .pbody{margin-top:1.1rem}
+  .poster{display:block;max-width:19rem;margin:1rem 0 0;
+    border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+  .poster img{width:100%;display:block}
+  .poster:hover{border-color:var(--accent)}
+  @media (prefers-reduced-motion: reduce){ .toggle svg{transition:none} }
+
+  .stack{
+    display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.75rem;
+    font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.7rem;
+  }
+  .stack span{border:1px solid var(--rule);color:var(--ink-faint);
+    padding:.14rem .45rem;border-radius:2px}
+
+  .demo{
+    background:var(--paper-raised);border:1px solid var(--rule);border-radius:3px;
+    aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:1.3rem;margin:1rem 0 0;color:var(--ink-faint);
+    max-width:30rem;
+  }
+  .demo .meta{max-width:22rem;line-height:1.6}
+  .demo video,.demo img{width:100%;height:100%;object-fit:cover;border-radius:2px}
+
+  /* ---------- intro video (click-to-load facade) ---------- */
+  .video{
+    position:relative;aspect-ratio:16/9;max-width:34rem;
+    border:1px solid var(--rule);border-radius:3px;overflow:hidden;
+    background:var(--paper-raised);cursor:pointer;margin:0 0 .9rem;
+  }
+  .video img{width:100%;height:100%;object-fit:cover;display:block}
+  .video .play{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:none;border:0;padding:0;cursor:pointer;
+  }
+  .video .play::before{
+    content:"";position:absolute;inset:0;background:#0A1413;opacity:.3;
+    transition:opacity .2s ease;
+  }
+  .video:hover .play::before{opacity:.15}
+  .video .play svg{
+    position:relative;width:3.4rem;height:3.4rem;
+    filter:drop-shadow(0 1px 6px rgba(0,0,0,.35));
+  }
+  .video .play:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+  .video iframe{width:100%;height:100%;border:0;display:block}
+  .caption{
+    font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.82rem;
+    color:var(--ink-faint);margin:0 0 2rem;max-width:34rem;line-height:1.6;
+  }
+  @media (prefers-reduced-motion: reduce){ .video .play::before{transition:none} }
 
   /* ---------- publications ---------- */
   ol.pubs{list-style:none;margin:0;padding:0}
-  ol.pubs li{
-    padding:1.1rem 0;
-    border-top:1px solid var(--rule);
-    display:grid;
-    grid-template-columns:5.2rem 1fr;
-    gap:1.2rem;
-  }
+  ol.pubs li{padding:1.1rem 0;border-top:1px solid var(--rule);
+    display:grid;grid-template-columns:5.2rem 1fr;gap:1.2rem}
   ol.pubs li:first-child{border-top:none;padding-top:0}
-  .venue{
-    font-family:"IBM Plex Sans",system-ui,sans-serif;
-    font-size:.74rem;
-    font-weight:600;
-    color:var(--accent);
-    padding-top:.32rem;
-    line-height:1.4;
-  }
+  @media (max-width:520px){ ol.pubs li{grid-template-columns:1fr;gap:.3rem} }
+  .venue{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.74rem;
+    font-weight:600;color:var(--accent);padding-top:.32rem;line-height:1.4}
   .venue span{display:block;color:var(--ink-faint);font-weight:400}
   .pub-title{font-size:1rem;line-height:1.45;margin:0}
-  .pub-note{
-    font-family:"IBM Plex Sans",system-ui,sans-serif;
-    font-size:.78rem;
-    color:var(--ink-faint);
-    margin:.35rem 0 0;
-  }
+  .pub-note{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.78rem;
+    color:var(--ink-faint);margin:.35rem 0 0}
 
-  /* ---------- contact ---------- */
-  .links{
-    display:flex;
-    flex-wrap:wrap;
-    gap:.4rem 1.5rem;
-    margin-top:1.2rem;
-    font-family:"IBM Plex Sans",system-ui,sans-serif;
-    font-size:.9rem;
-  }
+  .links{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;margin-top:1.2rem;
+    font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.9rem}
 
-  footer{
-    padding:2.5rem 0 0;
-    border-top:1px solid var(--rule);
-    margin-top:3.2rem;
-  }
+  footer{padding:2.5rem 0 0;border-top:1px solid var(--rule);margin-top:3.2rem}
 
-  .todo{
-    font-family:"IBM Plex Sans",system-ui,sans-serif;
-    font-size:.72rem;
-    color:var(--accent);
-    background:var(--accent-wash);
-    padding:.12rem .4rem;
-    border-radius:2px;
-    font-weight:500;
-  }
+  .todo{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.72rem;
+    color:var(--accent);background:var(--accent-wash);padding:.12rem .4rem;
+    border-radius:2px;font-weight:500}
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header class="masthead">
-    <div class="name">Joohan <span class="affil">— Kogakuin University, Misaki Lab</span></div>
+    <div class="name">Joohan Bae <span class="affil">— Kogakuin University, Misaki Lab</span></div>
     <div class="meta">Tokyo</div>
   </header>
 
   <div class="hero">
     <p>Every answer an AI gives rests on something it never said out loud. I build interfaces that <span class="premise" tabindex="0">surface those unstated premises<span class="gloss">This sentence assumes that unstated premises are recoverable at all — that an LLM's output carries recoverable traces of the reasoning that produced it. That assumption is what my research tests.</span></span> and hand them back to the person, so they can argue with them.</p>
+
+    <div class="now">
+      <div class="tag">AT UIST 2026</div>
+      <p>I'm in Detroit, November 2–5, presenting <strong>TokenTangram</strong> at the poster session. Happy to talk about anything below — find me there or write to me.<br>
+      <span class="todo">TO ADD</span> poster session number and time once the program is out.</p>
+    </div>
   </div>
 
   <section>
     <h2>Research</h2>
-    <p class="lede">I work on human–AI interaction, specifically on making the reasoning behind a model's output available for inspection and revision. My grounding is in argumentation theory and in Nishida Kitarō's concept of <em>basho</em> — the place from which a statement becomes sayable.</p>
+    <p class="lede">I work on human–AI interaction for people without domain expertise — the general users who have no way to check whether an AI is helping them or just agreeing with them. My goal is to make AI legible enough that using it well does not require already knowing the answer.</p>
     <p>Three threads run through the work.</p>
 
     <div style="margin-top:2rem">
       <div class="thread">
+        <h3>Telling personalization apart from sycophancy</h3>
+        <p>When a model adapts to you, you cannot tell whether it fitted itself to your situation or simply to your opinion. I treat that indistinguishability as the core problem, and approach it by giving people a view of their own background knowledge and usage habits rather than by explaining the model.</p>
+      </div>
+      <div class="thread">
         <h3>Extracting implicit premises</h3>
-        <p>An LLM response is an enthymeme: an argument with its warrant left out. I develop methods to recover those warrants and represent them as objects a person can accept, reject, or rewrite.</p>
+        <p>An LLM response is an enthymeme: an argument with its warrant left out. I develop methods to recover those warrants — from the conversation log together with the user's own background — and represent them as objects a person can accept, reject, or rewrite.</p>
       </div>
       <div class="thread">
         <h3>Making the cost of vagueness visible</h3>
-        <p>When an instruction is imprecise, someone pays for it — usually the person, in rework they did not anticipate. TokenTangram meters that cost visually at the moment of writing the command.</p>
-      </div>
-      <div class="thread">
-        <h3>Argument as an interaction technique</h3>
-        <p>A system where the person argues against the AI rather than the reverse. Built on Walton's argumentation schemes and Toulmin's warrant-gap framework, with the model's stance governed by explicit rules rather than free generation.</p>
+        <p>When an instruction is imprecise, someone pays for it, usually the person, in rework they did not anticipate. TokenTangram meters that cost visually at the moment the command is written.</p>
       </div>
     </div>
   </section>
 
   <section>
-    <h2>TokenTangram</h2>
-    <div class="demo">
-      <div class="meta">
-        <span class="todo">TO ADD</span><br><br>
-        Drop the UIST preview video here.<br>
-        Replace this block with:<br>
-        &lt;video src="tokentangram.mp4" autoplay muted loop playsinline&gt;&lt;/video&gt;
-      </div>
+    <h2>Projects</h2>
+
+    <div class="project">
+      <div class="yr">2026<span>UIST</span></div>
+      <details class="pdet" open>
+        <summary>
+          <h3>TokenTangram</h3>
+          <p class="role">First author · concept, system, paper · with Daigo Misaki</p>
+          <p class="teaser">A tangram microworld that bills every command at its measured tokens, so you can see who paid for the vagueness — you or the model.</p>
+          <span class="toggle"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8.5 L10 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="pbody">
+          <p class="desc">Ask an AI vaguely and it still answers, by filling in what you left unsaid. You never see that work, and no one is billed for it. TokenTangram prices it: a user bar and an AI bar fill side by side as you work.</p>
+          <p class="desc">You can rephrase the command yourself or hand the rest to the model. The counts are measured; the accounting is ours. The meter prices a sentence by a stated rule rather than measuring ambiguity, and it is a probe, not a validated instrument.</p>
+          <div class="stack"><span>LLM interface</span><span>Interaction technique</span><span>UIST 2026 Posters</span></div>
+          <div class="video" data-yt="AoXFVmz7ONg">
+            <img src="https://img.youtube.com/vi/AoXFVmz7ONg/maxresdefault.jpg"
+                 alt="TokenTangram video figure"
+                 onerror="this.onerror=null;this.src='https://img.youtube.com/vi/AoXFVmz7ONg/hqdefault.jpg'">
+            <button class="play" type="button" aria-label="Play TokenTangram video">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <circle cx="32" cy="32" r="31" fill="none" stroke="#fff" stroke-width="2" opacity=".9"/>
+                <path d="M26 20.5 L45 32 L26 43.5 Z" fill="#fff"/>
+              </svg>
+            </button>
+          </div>
+          <p class="caption">Video figure, 4:15, captioned.</p>
+        </div>
+      </details>
     </div>
-    <p>A visual token-metered interaction technique that prices imprecision as you write. Vague commands consume more of a visible budget than precise ones, so the trade-off between effort spent specifying and effort spent repairing becomes legible before the model runs.</p>
-    <p class="pub-note">Presented as a poster at UIST 2026. The meter is a research probe, not a validated ambiguity measure.</p>
+
+    <div class="project">
+      <div class="yr">2026<span>ongoing</span></div>
+      <details class="pdet">
+        <summary>
+          <h3>Implicit premise extraction</h3>
+          <p class="role">Master's thesis · in progress</p>
+          <p class="teaser">Recovering the premises an LLM leaves unstated, and handing them back as something the person can argue with.</p>
+          <span class="toggle"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8.5 L10 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="pbody">
+          <p class="desc">The input is the conversation log plus the user's own background, since the log alone would have to cover far too wide a range of readers to say anything specific about any of them.</p>
+          <p class="desc">The motivation is over-reliance: before anyone can calibrate trust in a model, they need a view of what they themselves already know and how they tend to use it.</p>
+          <div class="stack"><span>Reflective informatics</span><span>Over-reliance</span><span>Targeting CHI / IUI</span></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="project">
+      <div class="yr">2026<span>ongoing</span></div>
+      <details class="pdet">
+        <summary>
+          <h3>Argument as an interaction technique</h3>
+          <p class="role">System design · prototype</p>
+          <p class="teaser">A system where the person argues against the AI rather than the other way round.</p>
+          <span class="toggle"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8.5 L10 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="pbody">
+          <p class="desc">The model resists, updates its stance with stated reasons, and leaves behind a map of the assumptions that survived the exchange.</p>
+          <p class="desc">Built on Walton's argumentation schemes and Toulmin's warrant-gap framework, with the model's stance governed by explicit condition–trigger rules and critical questions bound to curated per-scheme banks, rather than free generation.</p>
+          <div class="stack"><span>Argumentation theory</span><span>Dialogue system</span></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="project">
+      <div class="yr">2026<span>ongoing</span></div>
+      <details class="pdet">
+        <summary>
+          <h3>IkigAI</h3>
+          <p class="role">Japan–Germany joint PBL with the University of Münster · circuits, firmware, behaviour, coordination</p>
+          <p class="teaser">A conversational robot against loneliness, for older adults. Fifteen people, two countries, five nationalities, one teddy bear that listens.</p>
+          <span class="toggle"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8.5 L10 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="pbody">
+          <p class="desc">Japan and Germany are ageing at the same time — 29.1% and 23% over sixty-five — and as people live alone and care staff run short, the time anyone gets to sit with one person is disappearing. Loneliness is not only a feeling; it is a measurable risk to health. Eleven students in Münster from information systems, four of us in Tokyo from mechanical engineering, working through Stanford's design thinking cycle with software and hardware developed in parallel. The Japanese team took everything except the frame, and I ran the English-language coordination between the two sides, in person and online.</p>
+          <p class="desc">We asked 23 people what makes them feel someone is actually listening. Seventy percent said facial expression, against 26% for body movement. A woman in her seventies put it simply: the eyes matter. A woman in her fifties added the warning we kept returning to — an expression can also be frightening. So IkigAI is 250mm of 3D-printed PLA, TPU and resin under fur and velour, with circular displays for eyes and animated pupils doing the emotional work, servos in the ears that move while it is listening, a microphone in the nose, and a speaker in the chest.</p>
+          <p class="desc">The interesting part was not the software. We started on an M5Stack CoreS3 and the two circular displays would not behave; chasing it down to SPI signal integrity meant moving the whole platform to a Raspberry Pi 5 mid-project. Then the audio amplifier began dying, repeatedly. It turned out the servos were dumping back-EMF into the rail every time the robot moved its head — the robot was, in effect, breaking its own voice every time it tried to express something. Fixing that meant rethinking the power rail, and replacing the Dupont wiring with proper JST-XH connectors so the thing could survive being handled by someone who is not an engineer.</p>
+          <p class="desc">After the presentation in Münster I brought the robot back and showed it in Japan, as a poster at the <a href="https://www.kogakuin.ac.jp/news/2026/101602.html">12th Medicine–Pharmacy–Engineering Three-University Symposium</a> in October 2026, one of 58 posters across the three universities. It was the first time the robot stood in front of clinicians and pharmacists instead of engineers — the people who actually know the ones it is being built for, and who can say what a loneliness scale would have to show before any of this counts.</p>
+          <a class="poster" href="ikigai-poster.jpg">
+            <img src="ikigai-poster.jpg" alt="IkigAI poster presented at the Three-University Symposium, October 2026">
+          </a>
+          <p class="caption">Poster, October 2026. With Nana Sakai, Mayu Ikeda, Genki Sakai, Daigo Misaki and Victor Taratukhin (Münster / Kogakuin).</p>
+          <div class="stack"><span>Raspberry Pi 5</span><span>Gemini Flash</span><span>GC9A01 displays</span><span>I2S audio</span><span>Servo control</span><span>Design thinking</span><span>HRI</span></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="project">
+      <div class="yr">2025<span>UIST</span></div>
+      <details class="pdet">
+        <summary>
+          <h3>Idea Clay</h3>
+          <p class="role">Second author · with Yuya Aikawa and Daigo Misaki</p>
+          <p class="teaser">A direct manipulation interface for LLMs built on the metaphor of clay play: merge ideas, tear them apart, never type a prompt.</p>
+          <span class="toggle"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8.5 L10 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="pbody">
+          <p class="desc">Ideas and elements sit on a canvas as fragments the user merges, tears apart, prunes, or swaps — five operations that invoke the model without ever asking for a written command.</p>
+          <p class="desc">The design follows Finke's Geneplore model, cycling between generating preinventive structures and exploring them, with Schumpeter's new combination underneath. A study with 12 participants found the metaphor made generation and exploration more intuitive than typing commands, which breaks the momentum divergent thinking depends on.</p>
+          <div class="stack"><span>React</span><span>GPT-4o-mini</span><span>Creativity support</span><span>UIST 2025 Adjunct</span></div>
+          <div class="video" data-yt="G5_fROZLfOs">
+            <img src="https://img.youtube.com/vi/G5_fROZLfOs/maxresdefault.jpg"
+                 alt="Idea Clay video"
+                 onerror="this.onerror=null;this.src='https://img.youtube.com/vi/G5_fROZLfOs/hqdefault.jpg'">
+            <button class="play" type="button" aria-label="Play Idea Clay video">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
+                <circle cx="32" cy="32" r="31" fill="none" stroke="#fff" stroke-width="2" opacity=".9"/>
+                <path d="M26 20.5 L45 32 L26 43.5 Z" fill="#fff"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </details>
+    </div>
+
   </section>
 
   <section>
@@ -299,22 +377,15 @@
       <li>
         <div class="venue">UIST<span>2026</span></div>
         <div>
-          <p class="pub-title">Who Pays for Vagueness? A Visual Token-Metered Interaction Technique for Promoting Precise AI Commands with TokenTangram</p>
-          <p class="pub-note">Poster · ACM Symposium on User Interface Software and Technology</p>
+          <p class="pub-title"><a href="https://doi.org/10.1145/3830397.3841836">Who Pays for Vagueness? A Visual Token-Metered Interaction Technique for Promoting Precise AI Commands with TokenTangram</a></p>
+          <p class="pub-note">Joohan Bae, Daigo Misaki · Poster, UIST 2026 Adjunct Proceedings</p>
         </div>
       </li>
       <li>
         <div class="venue">UIST<span>2025</span></div>
         <div>
-          <p class="pub-title"><span class="todo">TO ADD</span> — title of your UIST 2025 Adjunct poster</p>
-          <p class="pub-note">Poster · UIST 2025 Adjunct Proceedings</p>
-        </div>
-      </li>
-      <li>
-        <div class="venue">JRM<span>under review</span></div>
-        <div>
-          <p class="pub-title">Structure Without Synchrony: AI-Mediated Text and Design Thinking Convergence</p>
-          <p class="pub-note">Journal of Robotics and Mechatronics · controlled study, 16 participants across 4 teams</p>
+          <p class="pub-title"><a href="https://doi.org/10.1145/3746058.3758345">Clay Play: A Metaphorical LLM Interface for Dynamic Idea Generation and Exploration</a></p>
+          <p class="pub-note">Yuya Aikawa, Joohan Bae, Daigo Misaki · Poster, UIST 2025 Adjunct Proceedings, Busan</p>
         </div>
       </li>
     </ol>
@@ -322,32 +393,47 @@
 
   <section>
     <h2>Background</h2>
-    <p>Master's student in mechanical engineering at Kogakuin University, in the Misaki Laboratory, supervised by Daigo Misaki and Masa Ogawa. I came to HCI through building things: before graduate school I led the programming team of the Kogakuin Robot Project, writing control software for competition robots.</p>
-    <p>That route matters to how I work. I read philosophy for the questions and build systems for the answers, and I would rather ship a probe that fails informatively than argue from a diagram. I work in Korean, Japanese, and English.</p>
+    <p>Master's student in mechanical engineering at Kogakuin University, in the Misaki Laboratory, supervised by Daigo Misaki and Masa Ogawa. I came to HCI through building things: as an undergraduate I led the programming team of the Kogakuin Robot Project, writing control software for competition robots.</p>
+    <p>That route still shapes how I work. The interface research and the hardware are the same practice for me — I would rather ship a probe that fails informatively than argue from a diagram. I grew up in Korea, went to high school and university in Japan, and work in Korean, Japanese, and English.</p>
   </section>
 
   <section>
     <h2>Contact</h2>
-    <p>I am applying to PhD programs for Fall 2028 entry. If you work on explanation, reflection, or reasoning support in human–AI interaction, I would be glad to talk.</p>
+    <p>I am applying to PhD programs for Fall 2027 entry, looking for advisors working on explanation, reflection, and reasoning support in human–AI interaction. If that is near your work, I would be glad to talk.</p>
     <div class="links">
-      <a href="mailto:REPLACE@example.com">Email <span class="todo">TO ADD</span></a>
+      <a href="mailto:am26074@g.kogakuin.jp">am26074@g.kogakuin.jp</a>
+      <a href="https://orcid.org/0009-0001-2834-5196">ORCID</a>
       <a href="#">Google Scholar <span class="todo">TO ADD</span></a>
       <a href="#">GitHub <span class="todo">TO ADD</span></a>
-      <a href="#">ORCID <span class="todo">TO ADD</span></a>
       <a href="#">CV (PDF) <span class="todo">TO ADD</span></a>
     </div>
   </section>
 
   <footer>
-    <div class="meta">Last updated September 2026</div>
+    <div class="meta">Last updated October 2026</div>
   </footer>
 
 </div>
 
 <script>
-  // On touch devices there is no hover, so reveal the gloss on tap.
   document.querySelectorAll('.premise').forEach(function (el) {
     el.addEventListener('click', function () { el.classList.toggle('revealed'); });
+  });
+
+  // Load a YouTube player only once someone actually wants to watch.
+  document.querySelectorAll('.video[data-yt]').forEach(function (box) {
+    box.addEventListener('click', function () {
+      var id = box.getAttribute('data-yt');
+      if (!id || id === 'VIDEO_ID') return;
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+      f.title = box.querySelector('img') ? box.querySelector('img').alt : 'Video';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture';
+      f.allowFullscreen = true;
+      box.innerHTML = '';
+      box.style.cursor = 'default';
+      box.appendChild(f);
+    });
   });
 </script>
 </body>
