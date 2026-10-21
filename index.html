@@ -208,6 +208,43 @@
 
   footer{padding:2.5rem 0 0;border-top:1px solid var(--rule);margin-top:3.2rem}
 
+  /* ---------- two-column layout ---------- */
+  .wrap{max-width:64rem;display:grid;grid-template-columns:13rem minmax(0,1fr);
+    column-gap:4rem;align-items:start;padding-top:4rem}
+  .side{position:sticky;top:3rem;font-family:"IBM Plex Sans",system-ui,sans-serif}
+  .main{min-width:0}
+  footer{grid-column:2}
+  .avatar{width:8.5rem;height:8.5rem;border-radius:50%;background:var(--accent-wash);
+    border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;
+    font-family:"Newsreader",Georgia,serif;font-size:2.4rem;color:var(--accent);margin-bottom:1.1rem}
+  .side-name{font-size:1.05rem;font-weight:600;color:var(--ink)}
+  .side-role{font-size:.82rem;color:var(--ink-soft);margin:.15rem 0 1rem}
+  .side-links{list-style:none;margin:0;padding:0;font-size:.82rem;color:var(--ink-soft);line-height:1.5}
+  .side-links li{margin:.35rem 0}
+  .about h1{font-size:2rem;font-weight:500;letter-spacing:-.01em;margin:0 0 1.2rem}
+  .about{padding-top:0}
+  .about p{max-width:none}
+  .thesis{margin-top:1.3rem!important;padding-left:1rem;border-left:2px solid var(--rule);font-size:.98rem}
+  .thesis span{display:block;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.72rem;
+    font-weight:600;letter-spacing:.02em;color:var(--ink-faint);margin-bottom:.15rem}
+  .callout{margin-top:1.8rem;background:var(--accent);color:var(--paper);border-radius:8px;
+    padding:1rem 1.2rem;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.9rem;line-height:1.6}
+  .news{list-style:none;margin:0;padding:0;font-size:.97rem}
+  .news li{padding:.45rem 0;display:grid;grid-template-columns:5.2rem 1fr;gap:1rem}
+  .news b{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.78rem;color:var(--accent);
+    font-weight:600;padding-top:.22rem}
+  @media (max-width:760px){
+    .wrap{grid-template-columns:1fr;padding-top:2.5rem}
+    .side{position:static;display:grid;grid-template-columns:auto 1fr;column-gap:1.2rem;
+      align-items:center;margin-bottom:2rem}
+    .avatar{width:4.5rem;height:4.5rem;font-size:1.3rem;margin:0;grid-row:span 2}
+    .side-role{margin:0}
+    .side-links{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.2rem 1rem;margin-top:1rem}
+    .side-links li{margin:0}
+    footer{grid-column:1}
+    .news li{grid-template-columns:1fr;gap:0}
+  }
+
   .todo{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:.72rem;
     color:var(--accent);background:var(--accent-wash);padding:.12rem .4rem;
     border-radius:2px;font-weight:500}
@@ -216,39 +253,40 @@
 <body>
 <div class="wrap">
 
-  <header class="masthead">
-    <div class="name">Joohan Bae <span class="affil">— Kogakuin University, Misaki Lab</span></div>
-    <div class="meta">Tokyo · <a href="cv.pdf">CV</a></div>
-  </header>
+  <aside class="side">
+    <div class="avatar" aria-hidden="true">JB</div>
+    <div class="side-name">Joohan Bae</div>
+    <div class="side-role">M.Eng. Student</div>
+    <ul class="side-links">
+      <li>Department of Mechanical Engineering</li>
+      <li>Kogakuin University, Tokyo</li>
+      <li><a href="mailto:am26074@g.kogakuin.jp">Email</a></li>
+      <li><a href="cv.pdf">CV (PDF)</a></li>
+      <li><a href="https://github.com/joohanbae">GitHub</a></li>
+      <li><a href="https://orcid.org/0009-0001-2834-5196">ORCID</a></li>
+    </ul>
+  </aside>
 
-  <div class="hero">
-    <p>Every answer an AI gives rests on something it never said out loud. I build interfaces that <span class="premise" tabindex="0">surface those unstated premises<span class="gloss">This sentence assumes that unstated premises are recoverable at all — that an LLM's output carries recoverable traces of the reasoning that produced it. That assumption is what my research tests.</span></span> and hand them back to the person, so they can argue with them.</p>
+  <main class="main">
+  <section class="about">
+    <h1>About me</h1>
+    <p>Joohan Bae is a master's student in the Department of Mechanical Engineering at Kogakuin University in Tokyo, where he works in the Misaki Laboratory with Prof. Daigo Misaki. He received his B.Eng. in Mechanical Systems Engineering from Kogakuin University.</p>
+    <p>He works on <strong>human–AI interaction</strong>, designing interfaces that help people without technical expertise understand how generative AI interprets what they ask, and on <strong>human–robot interaction</strong>. He came to HCI by building things: as an undergraduate he led the programming team of the Kogakuin Robot Project.</p>
+    <p class="thesis"><span>Master's thesis, in preparation</span>Interaction Support for Meaning Negotiation in Human–Generative AI Collaboration</p>
 
-    <div class="now">
-      <div class="tag">AT UIST 2026</div>
-      <p>I'm in Detroit, November 2–5, presenting <strong>TokenTangram</strong> at the Posters, Demos, and SIC Reception on Tuesday, November 3, 18:00–21:00. Happy to talk about anything below — find me there or write to me.</p>
-    </div>
-  </div>
+    <div class="callout">I am applying to PhD programs for Fall 2027 entry. I will be at <strong>UIST 2026</strong> in Detroit, presenting TokenTangram at the poster reception on Tuesday, November 3, 18:00–21:00.</div>
+  </section>
 
   <section>
-    <h2>Research</h2>
-    <p class="lede">I work on human–AI interaction for people without domain expertise — the general users who have no way to check whether an AI is helping them or just agreeing with them. My goal is to make AI legible enough that using it well does not require already knowing the answer.</p>
-    <p>Three threads run through the work.</p>
-
-    <div style="margin-top:2rem">
-      <div class="thread">
-        <h3>Telling personalization apart from sycophancy</h3>
-        <p>When a model adapts to you, you cannot tell whether it fitted itself to your situation or simply to your opinion. I treat that indistinguishability as the core problem, and approach it by giving people a view of their own background knowledge and usage habits rather than by explaining the model.</p>
-      </div>
-      <div class="thread">
-        <h3>Extracting implicit premises</h3>
-        <p>An LLM response is an enthymeme: an argument with its warrant left out. I develop methods to recover those warrants — from the conversation log together with the user's own background — and represent them as objects a person can accept, reject, or rewrite.</p>
-      </div>
-      <div class="thread">
-        <h3>Making the cost of vagueness visible</h3>
-        <p>When an instruction is imprecise, someone pays for it, usually the person, in rework they did not anticipate. TokenTangram meters that cost visually at the moment the command is written.</p>
-      </div>
-    </div>
+    <h2>News</h2>
+    <ul class="news">
+      <li><b>2026-11</b>Presenting TokenTangram at UIST 2026, Detroit.</li>
+      <li><b>2026-10</b>Poster at the 25th International Symposium on Advanced Technology (ISAT-25), Tainan, Taiwan.</li>
+      <li><b>2026-10</b>Presented the IkigAI robot at the 12th Medicine–Pharmacy–Engineering Three-University Symposium, Tokyo.</li>
+      <li><b>2026-08</b>TokenTangram accepted to UIST 2026 Posters.</li>
+      <li><b>2026-07</b>Started the Kogakuin × University of Münster joint project, building IkigAI.</li>
+      <li><b>2026-04</b>Started the M.Eng. program at Kogakuin University.</li>
+    </ul>
   </section>
 
   <section>
@@ -256,7 +294,7 @@
 
     <div class="project">
       <div class="yr">2026<span>UIST</span></div>
-      <details class="pdet" open>
+      <details class="pdet">
         <summary>
           <h3>TokenTangram</h3>
           <p class="role">First author · concept, system, paper · with Daigo Misaki</p>
@@ -283,39 +321,7 @@
       </details>
     </div>
 
-    <div class="project">
-      <div class="yr">2026<span>ongoing</span></div>
-      <details class="pdet">
-        <summary>
-          <h3>Meaning negotiation with generative AI</h3>
-          <p class="role">Master's thesis · in progress · Interaction Support for Meaning Negotiation in Human–Generative AI Collaboration</p>
-          <p class="teaser">Making visible how a person and a generative AI line up intent and interpretation, so the person can understand and correct the output themselves.</p>
-          <span class="toggle"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8.5 L10 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </summary>
-        <div class="pbody">
-          <p class="desc">I define an implicit assumption as whatever is unstated yet necessary for an AI result, and operationalize it as measurable traces in the interaction itself. TokenTangram is the first probe built on that definition.</p>
-          <p class="desc">The motivation is over-reliance: before anyone can calibrate trust in a model, they need a view of what they themselves already know and how they tend to use it. Next is a 12-participant within-subjects study comparing length-based and attempt-based cost displays, planned for December 2026.</p>
-          <div class="stack"><span>Reflective informatics</span><span>Over-reliance</span><span>User study</span><span>Targeting CHI / IUI</span></div>
-        </div>
-      </details>
-    </div>
 
-    <div class="project">
-      <div class="yr">2026<span>ongoing</span></div>
-      <details class="pdet">
-        <summary>
-          <h3>Argument as an interaction technique</h3>
-          <p class="role">System design · prototype</p>
-          <p class="teaser">A system where the person argues against the AI rather than the other way round.</p>
-          <span class="toggle"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4 L6 8.5 L10 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </summary>
-        <div class="pbody">
-          <p class="desc">The model resists, updates its stance with stated reasons, and leaves behind a map of the assumptions that survived the exchange.</p>
-          <p class="desc">Built on Walton's argumentation schemes and Toulmin's warrant-gap framework, with the model's stance governed by explicit condition–trigger rules and critical questions bound to curated per-scheme banks, rather than free generation.</p>
-          <div class="stack"><span>Argumentation theory</span><span>Dialogue system</span></div>
-        </div>
-      </details>
-    </div>
 
     <div class="project">
       <div class="yr">2026<span>ongoing</span></div>
@@ -455,22 +461,9 @@
     </ol>
   </section>
 
-  <section>
-    <h2>Background</h2>
-    <p>Master's student in mechanical engineering at Kogakuin University (since April 2026), in the Misaki Laboratory, supervised by Daigo Misaki and Masa Ogawa. Before that, a B.Eng. in Mechanical Systems Engineering at Kogakuin (2026). I came to HCI through building things: as an undergraduate I led the programming team of the Kogakuin Robot Project, writing control software for competition robots. I also teach as a TA in the Design Engineering course.</p>
-    <p>That route still shapes how I work. The interface research and the hardware are the same practice for me — I would rather ship a probe that fails informatively than argue from a diagram. I grew up in Korea, went to high school and university in Japan, and work in Korean, Japanese, and English.</p>
-  </section>
 
-  <section>
-    <h2>Contact</h2>
-    <p>I am applying to PhD programs for Fall 2027 entry, looking for advisors working on explanation, reflection, and reasoning support in human–AI interaction. If that is near your work, I would be glad to talk.</p>
-    <div class="links">
-      <a href="mailto:am26074@g.kogakuin.jp">am26074@g.kogakuin.jp</a>
-      <a href="https://orcid.org/0009-0001-2834-5196">ORCID</a>
-      <a href="cv.pdf">CV (PDF)</a>
-      <a href="https://github.com/joohanbae">GitHub</a>
-    </div>
-  </section>
+
+  </main>
 
   <footer>
     <div class="meta">Last updated October 2026</div>
